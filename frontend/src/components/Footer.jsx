@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="flex justify-around  border-b-2 border-amber-50 pb-5">
         <div className="flex flex-col gap-3 ">
         
-          <h1 className="text-3xl  bg-linear-to-r from-black to-red-500 bg-clip-text text-transparent">PrimeDrive</h1>
+          <h1 className="text-3xl  bg-gradient-to-r from-black to-red-500 bg-clip-text text-transparent">PrimeDrive</h1>
       
         <p className="text-black">Discover top-tier vehicles for rent or purchase, backed by trusted service and unbeatable value..</p>
       </div>

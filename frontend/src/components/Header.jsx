@@ -1,7 +1,9 @@
 import { Button } from '@mui/joy'
-import { Link } from 'react-router'
+import { Link, useNavigate,  } from 'react-router'
 import './header.css'
 const Header = () => {
+
+   const navigation = useNavigate() 
   return (
    
         <header className='border-white border-2 bg-[var(--third-color)] flex items-center justify-between w-[95%] rounded-2xl'>
@@ -14,7 +16,7 @@ const Header = () => {
                 </ul>
                 <div className='flex items-center gap-5'>
                     <Button  sx={{ padding : "0.5rem 3rem", fontFamily : "var(--button-font)"}}>Login</Button>
-                    <Button  sx={{ padding : "0.5rem 3rem", fontFamily : "var(--button-font)"}}>Join Us</Button>
+                    <Button onClick={() => navigation('/SignUp')}  sx={{ padding : "0.5rem 3rem", fontFamily : "var(--button-font)"}}>Join Us</Button>
                 </div>
             </nav>
         </header>
