@@ -37,7 +37,6 @@ const SignUpForm = () => {
     const [data , action , isPending] = useActionState(handleSubmit , { success: null, errors: {} })
 
 
-    console.log("data", data)
   return (
     <article className='flex flex-col justify-between h-full'>
     <div className='flex flex-col gap-5'>
