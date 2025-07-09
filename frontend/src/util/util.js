@@ -25,3 +25,38 @@ export const CarFeatures = [
         image : mazda
     }
 ]
+
+export const EmailValidation = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || email.trim() === '') {
+        return "Email is required.";
+    }
+    if (!emailRegex.test(email)) {
+        return "Please enter a valid email address.";
+    }
+    return null; 
+};
+
+export const PasswordValidation = (password) => {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if (!password || password.trim() === '') {
+        return "Password is required.";
+    }
+    if (!passwordRegex.test(password)) {
+        return "Password must be at least 8 characters, contain an uppercase letter, a lowercase letter, and a number.";
+    }
+    return null; 
+};
+
+export const PasswordMatch = (password, confirmPass) => {
+    if (!confirmPass || confirmPass.trim() === '') {
+        return "Confirm Password is required.";
+    }
+    if (password !== confirmPass) {
+        return "Passwords do not match.";
+    }
+    return null; 
+};
+export const UsernameValidation = (username = "Anonymos")=>{
+    return username 
+}
