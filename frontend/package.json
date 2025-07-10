@@ -13,14 +13,20 @@
     "@chakra-ui/react": "^3.21.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@hookform/resolvers": "^5.1.1",
     "@material-tailwind/react": "^2.1.10",
     "@mui/joy": "^5.0.0-beta.52",
     "@tailwindcss/vite": "^4.1.11",
     "aos": "^2.3.4",
+    "axios": "^1.10.0",
+    "lucide-react": "^0.525.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hook-form": "^7.60.0",
+    "react-hot-toast": "^2.5.2",
     "react-router": "^7.6.3",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",

@@ -1,41 +1,35 @@
 import { Button, Input } from '@mui/joy'
-import React, { useActionState } from 'react'
+import React, { useState } from 'react'
 import "./signup.css"
-import { EmailValidation, PasswordMatch, PasswordValidation, UsernameValidation } from '../../util/util'
+import axios from 'axios'
+import {useForm} from 'react-hook-form'
+import {yupResolver} from '@hookform/resolvers/yup'
+import { ValidationSchema } from '../../util/util'
+import { LoaderCircle } from 'lucide-react';
+import toast from "react-hot-toast"
 const SignUpForm = () => {
- const handleSubmit = async (prevData, formData) => {
-    const username = formData.get('username');
-    const email = formData.get('email');
-    const password = formData.get('password');
-    const confirmPassword = formData.get('confirmPassword');
-
-    // Perform validation using utility functions
-    const errors = {
-        username: UsernameValidation(username),
-        email: EmailValidation(email),
-        password: PasswordValidation(password),
-        confirmPassword: PasswordMatch(password, confirmPassword),
-        form: null 
-    };
-
-    const hasErrors = Object.values(errors).some(error => error !== null);
-
-    if (hasErrors) {
-        return { success: false, errors };
-    } else {
-        const data = {
-            username,
-            email,
-            password
-        };
-        console.log("Form submitted successfully", data);
-        return { success: true, message: "Registration successful!", data, errors: {} };
+    const [Loading, setLoading] = useState(false)
+    const {register , handleSubmit , formState : {errors}} = useForm({
+        resolver : yupResolver(ValidationSchema)
+    })
+    const onSubmit = async (data) => {
+        const { username, email, password } = data;
+        try {
+            setLoading(true)
+            const response = await axios.post("http://localhost:3005/auth/register" , {
+                username,
+                email,
+                password
+            })
+        toast.success('User Submitted successfuly')
+        console.log(response.data)
+        setLoading(false)
+        } catch (error) {
+            console.log(error)
+            toast.error("error please check your data")
+        }
+      
     }
-};
-
-
-    const [data , action , isPending] = useActionState(handleSubmit , { success: null, errors: {} })
-
 
   return (
     <article className='flex flex-col justify-between h-full'>
@@ -44,15 +38,15 @@ const SignUpForm = () => {
        <h1 className='text-2xl font-bold pb-5 tracking-wide'>Join PrimeDrive Today</h1>
         <p className='text-base'>Create your account to access premium vehicles, personalized offers, and a seamless driving experience — whether buying or renting.</p>  
       </div> 
-      <form action={action}  className='flex flex-col'>
-        <Input placeholder='Insert your username' sx={{paddingY : "10px" , marginY : "1rem"}} name='username'/>
-        <Input placeholder='Insert your Email' type='email' sx={{paddingY : "10px" , marginY : "1rem"}} name='email'/>
-        <p className='text-base text-red-500 font-bold'>{data.errors.email}</p>
-        <Input placeholder='Insert your Password' type='password' sx={{paddingY : "10px" , marginY : "1rem"}} name='password'/>
-        <p className='text-base text-red-500 font-bold'>{data.errors.password}</p>
-        <Input placeholder='Confirm your Password' type='password' sx={{paddingY : "10px" , marginY : "1rem"}} name='confirmPassword'/>
-        <p className='text-base text-red-500 mb-4 font-bold'>{data.errors.confirmPassword}</p>
-        <Button type='submit' sx={{paddingY : "10px"}}>Register</Button>
+      <form  className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
+        <Input {...register('username')} placeholder='Insert your username' sx={{paddingY : "10px" , marginY : "1rem"}} name='username'/>
+        <Input {...register('email')} placeholder='Insert your Email' type='email' sx={{paddingY : "10px" , marginY : "1rem"}} name='email'/>
+        {errors.email && <p className='text-base font-bold text-red-500'>{errors.email.message}</p>}
+        <Input {...register('password')} placeholder='Insert your Password' type='password' sx={{paddingY : "10px" , marginY : "1rem"}} name='password'/>
+        {errors.password && <p className='text-base font-bold text-red-500'>{errors.password.message}</p>}
+        <Input {...register('confirmPassword')} placeholder='Confirm your Password' type='password' sx={{paddingY : "10px" , marginY : "1rem"}} name='confirmPassword'/>
+        {errors.confirmPassword && <p className='text-base font-bold text-red-500'>{errors.confirmPassword.message}</p>}
+        <Button disabled = {Loading} type='submit' sx={{paddingY : "10px" , marginTop : "1rem"}}>{Loading && <LoaderCircle className='animate-spin'/>} Register</Button>
          <div className="flex items-center text-center">
           <hr className="flex-grow border-t border-gray-300" />
           <span className="px-4 text-black text-base">or you can continue with</span>
