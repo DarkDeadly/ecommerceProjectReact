@@ -15,7 +15,7 @@ const Header = () => {
                     <Link>About Us</Link>
                 </ul>
                 <div className='flex items-center gap-5'>
-                    <Button  sx={{ padding : "0.5rem 3rem", fontFamily : "var(--button-font)"}}>Login</Button>
+                    <Button  sx={{ padding : "0.5rem 3rem", fontFamily : "var(--button-font)"}} onClick={() => navigation('/SignIn')}>Login</Button>
                     <Button onClick={() => navigation('/SignUp')}  sx={{ padding : "0.5rem 3rem", fontFamily : "var(--button-font)"}}>Join Us</Button>
                 </div>
             </nav>

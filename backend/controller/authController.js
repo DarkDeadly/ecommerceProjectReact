@@ -63,12 +63,12 @@ const LoginUser = async (req, res) => {
     const user = await User.findOne({ email: email.toLowerCase() });
     if (!user) {
       return res.status(400).json({
-        message: "Invalid email or password",
+        message: "Invalid email",
       });
     }
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(400).json({ message: "Invalid email or password" });
+      return res.status(400).json({ message: "Invalid  password" });
     }
     const token = signJWT({ email: user.email, id: user._id, role: user.role });
     res.cookie("token", token, {
