@@ -4,6 +4,7 @@ require("dotenv").config()
 const userAuth = require("./routes/users/userauth")
 const carRoute = require("./routes/cars/carRoute")
 const cors = require("cors")
+const cookieparser = require("cookie-parser")
 const app = express()
 const port = process.env.PORT || 5000
 
@@ -16,6 +17,7 @@ app.use(cors({
 }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieparser())
 app.use("/auth", userAuth)
 app.use("/cars" , carRoute)
 app.listen(port , () => {

@@ -16,6 +16,7 @@ const SignUpForm = () => {
         const { username, email, password } = data;
         try {
             setLoading(true)
+            axios.defaults.withCredentials = true
             const response = await axios.post("http://localhost:3005/auth/register" , {
                 username,
                 email,
