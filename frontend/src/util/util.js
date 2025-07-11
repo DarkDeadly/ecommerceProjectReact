@@ -46,4 +46,31 @@ export const ValidationSchema = Yup.object().shape({
 
 })
 
+export const SoldCars = [
+    {
+        name : "Chevrolet Camaro",
+        sold : "50%",
+        oldprice : "104,000 DT",
+        newprice :  "52,000 DT",
+        image : "https://upload.wikimedia.org/wikipedia/commons/2/2f/2019_Chevrolet_Camaro_base%2C_front_11.9.19.jpg"
+
+    },
+    {
+        name : "Ford Mustang",
+        sold : "40%",
+        oldprice : "90,000 DT",
+        newprice : "54,000 DT",
+        image : "https://www.evanshalshaw.com/-/media/evanshalshaw/blog/car-legends-the-legacy-of-the-ford-mustang/2021-update/ford-mustang-bullitt-1280x720px.ashx?mh=1440&la=en&h=720&w=1280&mw=2560&hash=B346F34C67677987BC5D91EBE52B65FC"
+    },
+    {
+        name : "Toyota GT86",
+        sold : "30%",
+        oldprice : "80,000 DT",
+        newprice : "56,000 DT",
+        image : "https://smartcdn.gprod.postmedia.digital/driving/wp-content/uploads/2021/04/21-04-16-eAlder-2021-Toyota-86-2.jpg"
+
+    }
+
+]
+
 

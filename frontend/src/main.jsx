@@ -7,6 +7,7 @@ import Home from "./pages/Home.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import { Toaster } from "react-hot-toast";
 import SignIn from "./pages/SignIn.jsx";
+import Workspace from "./pages/Workspace.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/SignIn",
     element : <SignIn/>
+  },
+  {
+    path : '/explore',
+    element : <Workspace/>
   }
 ]);
 

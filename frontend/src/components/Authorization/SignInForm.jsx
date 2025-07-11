@@ -21,8 +21,8 @@ const SignInForm = () => {
                 email ,
                 password
             })
-            console.log("data is : " , response.data)
             toast.success("User Logged In Succesfuly")
+            Navigate('/explore')
             setLoading(false)    
         } catch (error) {
             toast.error(error.response.data.message)
@@ -43,8 +43,8 @@ const SignInForm = () => {
       <form  className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
         <Input {...register('email')} placeholder='Insert your Email' type='email' sx={{paddingY : "10px" , marginY : "1rem"}} name='email'/>
         <Input {...register('password')} placeholder='Insert your Password' type='password' sx={{paddingY : "10px" , marginY : "1rem"}} name='password'/>
-        <span className='underline cursor-pointer max-[902px]:text-white'>Forgot Password </span>
-        <Button disabled = {Loading} type='submit' sx={{paddingY : "10px" , marginTop : "1rem"}}>{Loading && <LoaderCircle className='animate-spin'/>} Register</Button>
+        <span className='underline cursor-pointer max-[902px]:text-white hover:text-purple-600'>Forgot Password </span>
+        <Button disabled = {Loading} type='submit' sx={{paddingY : "10px" , marginTop : "1rem"}}>{Loading && <LoaderCircle className='animate-spin'/>} Login</Button>
          <div className="flex items-center text-center">
           <hr className="flex-grow border-t border-gray-300" />
           <span className="px-4 text-black text-base">or you can continue with</span>
