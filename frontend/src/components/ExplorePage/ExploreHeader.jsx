@@ -7,7 +7,7 @@ import ProfileMenu from './ProfileMenu';
 const ExploreHeader = () => {
    
   return (
-    <header className='p-3 border-white border-2 bg-[var(--third-color)] flex items-center justify-between '>
+    <header className='p-3 border-white border-2 bg-[var(--third-color)] flex items-center justify-between sticky top-0 z-30'>
             <h1 className="text-3xl  bg-linear-to-r from-black to-red-500 bg-clip-text text-transparent">PrimeDrive</h1>
             <nav className='flex items-center gap-5'>
                 <ul className='flex gap-5 items-center text-base'>

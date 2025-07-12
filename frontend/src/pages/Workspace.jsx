@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Aos from "aos";
 import Anoucement from "../components/ExplorePage/Anoucement";
 import "../components/ExplorePage/workspace.css"
+import PopularCars from "../components/ExplorePage/PopularCars";
 const Workspace = () => {
   useEffect(() => {
     Aos.init({});
@@ -19,7 +20,13 @@ const Workspace = () => {
         <Anoucement />
       </div>
       <section className="bg-black w-full p-10 mb-5"></section>
-      
+      <div className="flex flex-col items-center  p-5">
+        <h1 className="text-3xl font-bold mb-5">Popular Cars </h1>
+        <div className="grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 w-full gap-3" data-aos="fade-left" data-aos-duration="3000">
+              <PopularCars/>
+      </div>
+
+      </div>
     </div>
   );
 };
