@@ -24,6 +24,12 @@ const CarModel = mongoose.Schema({
         type: String,
         required: true
     },
+    
+     Popular : {
+        type : Boolean,
+        default : false
+     },
+    
     addedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",

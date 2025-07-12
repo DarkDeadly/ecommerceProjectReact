@@ -99,12 +99,30 @@ const deleteCar = async(req , res) => {
    }
 }
 
+const GetPopularCars = async (req, res) => {
+  try {
+   
+    const PopCars = await CarModel.find({ Popular: true }).limit(6);
 
+    res.status(200).json({
+      success: true,
+      message: 'Popular Cars fetched successfully',
+      cars: PopCars,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch popular cars',
+      error: error.message,
+    });
+  }
+};
 
 module.exports = {    
     addingCar,
     GetCars,
     GetCarById,
     editCar,
-    deleteCar
+    deleteCar,
+    GetPopularCars
 }
