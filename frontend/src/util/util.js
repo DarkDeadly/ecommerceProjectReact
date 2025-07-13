@@ -73,4 +73,27 @@ export const SoldCars = [
 
 ]
 
+export const features = [
+    {
+        id : "1" ,
+        title : "Affordable Plans for All",
+        text : "From students to executives, we offer flexible pricing options tailored to every lifestyle."
+    },
+    {
+        id : "2" ,
+        title : "Unbeatable Price Assurance",
+        text : "We guarantee the best market deals — no hidden fees, no surprises, just value."
+    },
+     {
+        id : "3" ,
+        title : "Go Green, Drive Clean",
+        text : "Experience the future with our expanding fleet of fully electric and hybrid vehicles."
+    },
+     {
+        id : "4" ,
+        title : " Experts at Your Service",
+        text : "Our passionate team ensures a smooth, stress-free journey — every mile of the way."
+    }
+]
+
 

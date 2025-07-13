@@ -6,6 +6,8 @@ import Aos from "aos";
 import Anoucement from "../components/ExplorePage/Anoucement";
 import "../components/ExplorePage/workspace.css"
 import PopularCars from "../components/ExplorePage/PopularCars";
+import Reasons from "../components/ExplorePage/Reasons";
+import Footer from "../components/Footer";
 const Workspace = () => {
   useEffect(() => {
     Aos.init({});
@@ -19,14 +21,16 @@ const Workspace = () => {
       <div className="bg-[var(--third-color)] border-4 border-[var(--third-color)] flex justify-center" data-aos="fade-left" data-aos-duration="3000">
         <Anoucement />
       </div>
-      <section className="bg-black w-full p-10 mb-5"></section>
+      <section className="bg-gradient-to-b from-black to-white  w-full p-10 mb-5"></section>
       <div className="flex flex-col items-center  p-5">
         <h1 className="text-3xl font-bold mb-5">Popular Cars </h1>
         <div className="grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 w-full gap-3" data-aos="fade-left" data-aos-duration="3000">
               <PopularCars/>
       </div>
-
+      
       </div>
+      <Reasons/>
+      <Footer width="w-full" rounded=""/>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Footer = () => {
+const Footer = ({width = "w-[95%]" , rounded = "rounded-t-4xl"}) => {
   return (
-     <footer className="w-[95%]  flex flex-col  justify-center bg-[var(--third-color)] rounded-t-4xl p-5 border-2 border-white">
+     <footer className={`${width}  flex flex-col  justify-center bg-[var(--third-color)] ${rounded} p-5 border-2 border-white`}>
       <div className="flex justify-around  border-b-2 border-amber-50 pb-5">
         <div className="flex flex-col gap-3 ">
         
