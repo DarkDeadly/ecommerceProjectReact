@@ -96,4 +96,6 @@ export const features = [
     }
 ]
 
+export const FilterItems = ["Chevrolet" , "Audi" , "Toyota" , "Ford"]
+
 

@@ -1,18 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import {  LucideBriefcaseBusiness } from 'lucide-react';
 import ProfileMenu from './ProfileMenu';
 
 
 const ExploreHeader = () => {
-   
+  const Navigate = useNavigate() 
   return (
     <header className='p-3 border-white border-2 bg-[var(--third-color)] flex items-center justify-between sticky top-0 z-30'>
             <h1 className="text-3xl  bg-linear-to-r from-black to-red-500 bg-clip-text text-transparent">PrimeDrive</h1>
             <nav className='flex items-center gap-5'>
                 <ul className='flex gap-5 items-center text-base'>
                     <Link to={'/explore'}>Explore</Link>
-                    <Link>Cars</Link>
+                    <Link onClick={() => Navigate('/Cars')}>Cars</Link>
                     <Link>Favourites</Link>
                 </ul>
               

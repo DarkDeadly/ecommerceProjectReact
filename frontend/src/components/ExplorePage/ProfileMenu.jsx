@@ -31,12 +31,10 @@ const ProfileMenu = () => {
      useEffect(() => {
       GetUser()
     }, [])
-
-    console.log(UserInfo.user)
   return (
     <div>
       <Dropdown>
-        <MenuButton><Avatar alt={UserInfo.user.username || "Anonymous"} size="md"/></MenuButton>
+        <MenuButton><Avatar alt={UserInfo?.user?.username || "User"} size="md"/></MenuButton>
         <Menu>
           <MenuItem>Profile</MenuItem>
           <MenuItem onClick={() => Logout()}>Logout</MenuItem>

@@ -10,6 +10,8 @@ import {
   Typography,
 } from "@mui/joy"
 import axios from "axios"
+import Lottie from "lottie-react"
+import Animation from "../../assets/Loading_car.json"
 import { Bookmark } from "lucide-react"
 import React, { useEffect, useState } from "react"
 
@@ -39,27 +41,7 @@ const PopularCars = () => {
   return (
     <>
       {loading
-        ? skeletons.map((_, index) => (
-            <Card sx={{ width: 420 }} key={index}>
-              <div className="flex justify-between">
-                <div>
-                  <Skeleton width={180} height={30} />
-                  <Skeleton width={120} height={20} />
-                </div>
-                <Skeleton variant="circular" width={32} height={32} />
-              </div>
-              <AspectRatio minHeight="120px" maxHeight="200px">
-                <Skeleton variant="rectangular" />
-              </AspectRatio>
-              <CardContent orientation="horizontal">
-                <div>
-                  <Skeleton width={80} />
-                  <Skeleton width={100} height={30} />
-                </div>
-                <Skeleton width={80} height={36} sx={{ ml: "auto" }} />
-              </CardContent>
-            </Card>
-          ))
+        ? <Lottie animationData={Animation}/>
         : Popular.map((popular, index) => (
             <Card sx={{ width: 420 }} key={index}>
               <div className="flex justify-between">

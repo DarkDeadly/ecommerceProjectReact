@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp.jsx";
 import { Toaster } from "react-hot-toast";
 import SignIn from "./pages/SignIn.jsx";
 import Workspace from "./pages/Workspace.jsx";
+import CarsPage from "./pages/CarsPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path : '/explore',
     element : <Workspace/>
+  },
+  {
+    path : "/Cars",
+    element : <CarsPage/>
   }
 ]);
 
