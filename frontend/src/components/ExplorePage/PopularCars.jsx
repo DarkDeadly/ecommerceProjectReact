@@ -41,7 +41,7 @@ const PopularCars = () => {
   return (
     <>
       {loading
-        ? <Lottie animationData={Animation}/>
+        ? <div className="flex justify-center"><Lottie animationData={Animation}/></div>
         : Popular.map((popular, index) => (
             <Card sx={{ width: 420 }} key={index}>
               <div className="flex justify-between">

@@ -29,6 +29,10 @@ const CarModel = mongoose.Schema({
         type : Boolean,
         default : false
      },
+     description : {
+        type : String,
+        default : ""
+     },
     
     addedBy: {
         type: mongoose.Schema.Types.ObjectId,

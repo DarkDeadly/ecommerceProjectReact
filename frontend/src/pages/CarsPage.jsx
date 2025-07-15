@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import ExploreHeader from "../components/ExplorePage/ExploreHeader";
 import PromoCarousel from "../components/ExplorePage/PromoCarousel";
 import FilterItemsList from "../components/CarsComp/FilterItemsList";
 import CarsCardList from "../components/CarsComp/CarsCardList";
 import { Button } from "@mui/joy";
 import Footer from "../components/Footer";
+import AddCarForm from "../components/CarsComp/AddCarForm";
 
 const CarsPage = () => {
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <div>
       <ExploreHeader />
@@ -18,7 +22,10 @@ const CarsPage = () => {
           <h1 className="text-3xl font-[var(--title-font)]">
             Best Cars for Rent and Sell
           </h1>
-          <Button sx={{paddingX : "1.5rem"}}> + Add Car</Button>
+          <Button sx={{paddingX : "1.5rem"}} onClick={handleOpen}> + Add Car</Button>
+          <div className="hidden">
+             <AddCarForm openModal = {open} handleClose = {handleClose}/>
+          </div>
         </div>
         <FilterItemsList />
       </section>

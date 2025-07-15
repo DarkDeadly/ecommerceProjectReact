@@ -1,6 +1,6 @@
 import axios from "axios";
 import Lottie from "lottie-react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import animation from "../../assets/Loading_car.json";
 import {
   AspectRatio,
@@ -11,9 +11,13 @@ import {
   Typography,
 } from "@mui/joy";
 import { Bookmark } from "lucide-react";
+import { CarDetailContext } from "../../context/CarContext";
+import { useNavigate } from "react-router";
 const CarsCardList = () => {
   const [Loading, setLoading] = useState(false);
   const [CarList, setCarList] = useState();
+  const {CarDetailData, setCarDetailData} = useContext(CarDetailContext)
+  const navigate = useNavigate()
   const CardList = async () => {
     setLoading(true);
     try {
@@ -34,10 +38,22 @@ const CarsCardList = () => {
     CardList();
   }, []);
 
+  const GetCarData = async(item) => {
+    try {
+        const response = await axios.get(import.meta.env.VITE_BACKENDURLCAR + `/getCars/${item._id}` , {
+            withCredentials : true
+        })
+        await setCarDetailData(response.data)
+        navigate(`/Cars/${item._id}`)
+    } catch (error) {
+        console.log(error)
+    }
+  }
+
   return (
     <>
       {Loading ? (
-        <Lottie animationData={animation} />
+        <div className="flex justify-center"><Lottie animationData={animation}/></div>
       ) : (
         CarList?.cars?.map((car, index) => (
           <Card sx={{ width: 420 }} key={index}>
@@ -74,8 +90,8 @@ const CarsCardList = () => {
                 variant="solid"
                 size="md"
                 color="primary"
-                aria-label="Buy car"
                 sx={{ ml: "auto", width : "100%", fontWeight: 600 }}
+                onClick={() => GetCarData(car)}
               >
                 View More 
               </Button>
