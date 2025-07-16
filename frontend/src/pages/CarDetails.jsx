@@ -1,13 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import ExploreHeader from '../components/ExplorePage/ExploreHeader'
-import { CarDetailContext } from '../context/CarContext'
+
+import CarDetailsInfo from '../components/CarsComp/CarDetailsInfo'
 
 const CarDetails = () => {
-   const {CarDetailData, setCarDetailData} = useContext(CarDetailContext)
-   console.log(CarDetailData)
+   
   return (
-    <div>
+    <div className='min-h-screen'>
         <ExploreHeader/>
+        <CarDetailsInfo/>
     </div>
   )
 }
