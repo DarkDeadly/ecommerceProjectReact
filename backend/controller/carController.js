@@ -3,10 +3,10 @@ const CarModel = require("../models/carModel")
 
 const addingCar = async ( req , res) => {
    try {
-    const   { name , brand , price , year , imageUrl } = req.body;
+    const   { name , brand , price , year , imageUrl , description , quantity} = req.body;
     const userId = req.user.id;
     // Check if all required fields are provided
-    if (!name || !brand || !price || !year || !imageUrl) {
+    if (!name || !brand || !price || !year || !imageUrl || !description || !quantity) {
         return res.status(400).json({ message: "All fields are required." });
     }   
     // Create a new car instance
@@ -16,6 +16,8 @@ const addingCar = async ( req , res) => {
         price,
         year,
         imageUrl,
+        description,
+        quantity,
         addedBy: userId 
     });
     // Save the car to the database
@@ -63,24 +65,32 @@ const GetCarById = async(req , res) => {
    
 }
 
-const editCar = async(req , res) => {
-    const {price} = req.body;
-    const carID = req.params.id ;
-  try {
-      const updateData = await CarModel.findByIdAndUpdate(carID , {$set : {price}} , {new : true} );
-    if (updateData) {
-        res.status(200).json({
-            message : "update successfuly"
-        })
-    }
-  } catch (error) {
-    res.status(404).json({
-        message : "error",
-        error : error.message
-    })
-  }
+const editCar = async (req, res) => {
+  const carID = req.params.id;
+  const updateFields = req.body;
 
-}
+  try {
+    const updatedCar = await CarModel.findByIdAndUpdate(
+      carID,
+      { $set: updateFields },
+      { new: true }
+    );
+
+    if (!updatedCar) {
+      return res.status(404).json({ message: "Car not found" });
+    }
+
+    res.status(200).json({
+      message: "Car updated successfully",
+      updatedCar,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error updating car",
+      error: error.message,
+    });
+  }
+};
 
 const deleteCar = async(req , res) => {
     const carID = req.params.id ;

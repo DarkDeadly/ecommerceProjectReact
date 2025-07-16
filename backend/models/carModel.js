@@ -25,7 +25,7 @@ const CarModel = mongoose.Schema({
         required: true
     },
     
-     Popular : {
+    Popular : {
         type : Boolean,
         default : false
      },
@@ -33,7 +33,10 @@ const CarModel = mongoose.Schema({
         type : String,
         default : ""
      },
-    
+    quantity: {
+        type: Number,
+        default: 0
+    },
     addedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
