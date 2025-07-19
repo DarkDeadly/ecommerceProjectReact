@@ -52,6 +52,26 @@ const getCartInfo = async(req , res) => {
   }
 }
 
+const CheckCarinCart = async (req, res) => {
+ const carId = req.query.carId;
+  try {
+  const cart = await Cart.findOne({ user: req.user.id})
+  if (!cart) {
+    return res.status(404).json({ message: "Cart not found" , carInCart: false });
+  }
+  const carInCart = cart.items.some(item => item.car.toString() === carId);
+  if (carInCart) {
+    return res.status(200).json({ message: "Car is in the cart" , carInCart: true });
+  }
+  return res.status(200).json({ message: "Car is not in the cart" , carInCart: false });  
+  } catch (error) {
+    console.error("Error checking car in cart:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+
+ 
+}
+
 const EditCartQuantity = async (req , res) => {
   const { cartId, carId, quantity } = req.body;
 
@@ -95,5 +115,5 @@ const EditCartQuantity = async (req , res) => {
 }
 
 module.exports = {
-  addToCart , getCartInfo , EditCartQuantity
+  addToCart , getCartInfo , EditCartQuantity ,CheckCarinCart
 }

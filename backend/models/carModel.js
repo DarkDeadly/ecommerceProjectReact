@@ -24,7 +24,6 @@ const CarModel = mongoose.Schema({
         type: String,
         required: true
     },
-    
     Popular : {
         type : Boolean,
         default : false

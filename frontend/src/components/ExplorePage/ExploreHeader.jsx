@@ -18,7 +18,9 @@ const ExploreHeader = () => {
               
             </nav>
               <div className='flex items-center gap-5'>
-                    <LucideBriefcaseBusiness/>
+                <div className='cursor-pointer' onClick={() => Navigate('/cart')}>
+                  <LucideBriefcaseBusiness/>
+                </div>
                    <ProfileMenu/>
                 </div>
         </header>

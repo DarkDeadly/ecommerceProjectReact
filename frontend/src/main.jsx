@@ -14,6 +14,7 @@ import CarDetails from "./pages/CarDetails.jsx";
 
 
 import { CarDetailContext } from "./context/CarContext.jsx";
+import CartPage from "./pages/CartPage.jsx";
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   { path: "/explore", element: <Workspace /> },
   { path: "/Cars", element: <CarsPage /> },
   { path: "/Cars/:id", element: <CarDetails /> },
+  { path: "/cart" , element : <CartPage/>}
 ]);
 
 const RootApp = () => {
