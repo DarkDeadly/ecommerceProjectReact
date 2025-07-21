@@ -15,6 +15,7 @@ import CarDetails from "./pages/CarDetails.jsx";
 
 import { CarDetailContext } from "./context/CarContext.jsx";
 import CartPage from "./pages/CartPage.jsx";
+import FavouritePage from "./pages/FavouritePage.jsx";
 
 
 const router = createBrowserRouter([
@@ -24,7 +25,8 @@ const router = createBrowserRouter([
   { path: "/explore", element: <Workspace /> },
   { path: "/Cars", element: <CarsPage /> },
   { path: "/Cars/:id", element: <CarDetails /> },
-  { path: "/cart" , element : <CartPage/>}
+  { path: "/cart" , element : <CartPage/>},
+  { path: "/favourites" , element : <FavouritePage/> }, 
 ]);
 
 const RootApp = () => {

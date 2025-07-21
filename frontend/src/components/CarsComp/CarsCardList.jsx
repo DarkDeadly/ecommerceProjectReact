@@ -10,9 +10,10 @@ import {
   IconButton,
   Typography,
 } from "@mui/joy";
-import { Bookmark } from "lucide-react";
+import {  HeartIcon } from "lucide-react";
 import { CarDetailContext } from "../../context/CarContext";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 const CarsCardList = () => {
   const [Loading, setLoading] = useState(false);
   const [CarList, setCarList] = useState();
@@ -50,7 +51,24 @@ const CarsCardList = () => {
     }
   }
 
- 
+  const AddFavourites = async(carId) => {
+    try {
+      const response = await axios.post(
+        import.meta.env.VITE_BACKENDURLFAVOURITE + "/add",
+        { carId: carId },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(response.data);
+      toast.success('Car added to favourites');
+    } catch (error) {
+      console.error("Error adding to favourites:", error);
+      toast.error("Failed to add to favourites");
+    }
+  }
+
+
   return (
     <>
       {Loading ? (
@@ -68,8 +86,9 @@ const CarsCardList = () => {
                 variant="plain"
                 color="neutral"
                 size="sm"
+                onClick={() => AddFavourites(car._id)}
               >
-                <Bookmark className="hover:text-amber-300" />
+                <HeartIcon className="hover:text-red-600 "  />
               </IconButton>
             </div>
             <AspectRatio minHeight="120px" maxHeight="200px">

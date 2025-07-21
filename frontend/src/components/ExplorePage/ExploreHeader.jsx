@@ -13,7 +13,7 @@ const ExploreHeader = () => {
                 <ul className='flex gap-5 items-center text-base'>
                     <Link to={'/explore'}>Explore</Link>
                     <Link onClick={() => Navigate('/Cars')}>Cars</Link>
-                    <Link>Favourites</Link>
+                    <Link onClick={() => Navigate('/favourites')}>Favourites</Link>
                 </ul>
               
             </nav>
