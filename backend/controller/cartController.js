@@ -114,6 +114,29 @@ const EditCartQuantity = async (req , res) => {
   } 
 }
 
+const DeleteCarFromCart = async(req  , res ) => {
+  const carId = req.params.id 
+  const User = req.user.id ;
+  const aunthenticated  = Cart.findOne({ user: User });
+  if(!aunthenticated) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+  try {
+    const cart = await Cart.findOne({ user: User });
+    if (!cart) {
+      return res.status(404).json({ message: "Cart not found" });
+    }
+    // Filter out the car to be deleted
+    cart.items = cart.items.filter(item => item.car.toString() !== carId);
+    await cart.save();
+    return res.status(200).json({ message: "Car removed from cart", cart });
+  } catch (error) {
+    console.error("Error deleting car from cart:", error);
+    res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+  
+}
+
 module.exports = {
-  addToCart , getCartInfo , EditCartQuantity ,CheckCarinCart
+  addToCart , getCartInfo , EditCartQuantity ,CheckCarinCart , DeleteCarFromCart
 }

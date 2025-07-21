@@ -54,6 +54,21 @@ const ModifyInfo = async(carId , Quantity) => {
     
   }
 }
+const DeleteCarFromCart = async(carId) => {
+  try {
+    const response = await axios.delete(
+      import.meta.env.VITE_BACKENDURLCART + `/delete/${carId}`,
+      {
+        withCredentials: true,
+      }
+    );
+    window.location.reload();
+    toast.success("Car deleted from cart");
+
+  } catch (error) {
+    console.error("Error deleting car from cart:", error);
+  }
+}
 
   useEffect(() => {
     GetCart();
@@ -66,14 +81,14 @@ const ModifyInfo = async(carId , Quantity) => {
           <h1 className="text-2xl font-bold">Your Cart is Empty</h1>
         </div>
       ) : (
-        <div className="h-full bg-gray-300 p-5">
+        <div className="h-full bg-gray-300 p-5 overflow-x-auto">
           <h1 className="text-2xl ">Your Cart</h1>
           <p className="mb-5 text-xl text-gray-600">
             There is{" "}
             <span className="font-bold">{CartList?.items.length} item(s)</span>{" "}
             in your cart.
           </p>
-          <Table sx={{ backgroundColor: "white", borderRadius: "8px" }}>
+          <Table sx={{ backgroundColor: "white", borderRadius: "8px"}}>
             <thead>
               <tr>
                 <th style={{ width: "50%" }}>Car</th>
@@ -84,7 +99,7 @@ const ModifyInfo = async(carId , Quantity) => {
               </tr>
             </thead>
             {CartList?.items.map((item, index) => (
-              <tbody key={index} >
+              <tbody key={index}  >
                 <tr>
                   <td>
                     <div className="flex gap-2">
@@ -123,9 +138,16 @@ const ModifyInfo = async(carId , Quantity) => {
                     <Button
                       variant="outlined"
                       onClick={() => ModifyInfo(item.car._id, item.quantity)}
+                      sx={{ marginRight: "10px" }}
                     >
                       Save
                     </Button>
+                    <Button
+                      variant="outlined"
+                      onClick={() => DeleteCarFromCart(item.car._id)}
+                      >
+                        Delete
+                      </Button>
                   </td>
                 </tr>
               </tbody>

@@ -2,6 +2,7 @@ import { AspectRatio, Button, Card, CardContent, IconButton, Typography } from '
 import axios from 'axios';
 import { HeartIcon } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
 
 const FavouriteList = () => {
     const [Favourites, setFavourites] = useState()
@@ -21,6 +22,22 @@ const FavouriteList = () => {
             setFavourites(response.data);
         } catch (error) {
             console.error("Error fetching favourites:", error);
+        }
+    }
+    const DeleteFavourite = async (carId) => {
+        try {
+            const response = await axios.delete(
+                import.meta.env.VITE_BACKENDURLFAVOURITE + `/delete/${carId}`,
+                {   
+                    withCredentials: true,
+                }
+            );
+            setFavourites(Favourites.filter(item => item.car._id !== carId));
+            toast.success('Car removed from favourites');
+           
+        } catch (error) {
+           console.log(error);
+            
         }
     }
     useEffect(() => {
@@ -46,6 +63,7 @@ const FavouriteList = () => {
                 variant="plain"
                 color="neutral"
                 size="sm"
+                onClick={() => DeleteFavourite(item.car._id)}
               >
                 <HeartIcon className="text-red-600 "  />
               </IconButton>
