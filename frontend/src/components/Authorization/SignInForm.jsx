@@ -7,9 +7,12 @@ import { Button, Input } from '@mui/joy'
 import { LoaderCircle } from 'lucide-react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { useContext } from 'react'
+import { UserContext } from '../../context/usercontext'
 const SignInForm = () => {
      const [Loading, setLoading] = useState(false)
      const [ErrorForm, setErrorForm] = useState("")
+     const {UserData, setUserData} = useContext(UserContext)
     const {register , handleSubmit } = useForm()
     const Navigate = useNavigate()
     const onSubmit = async(data) => {
@@ -21,6 +24,7 @@ const SignInForm = () => {
                 email ,
                 password
             })
+            await setUserData(response.data)
             toast.success("User Logged In Succesfuly")
             Navigate('/explore')
             setLoading(false)    

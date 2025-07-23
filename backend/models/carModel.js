@@ -5,7 +5,8 @@ const CarModel = mongoose.Schema({
     name: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+         unique: true,
     },
     brand: {
         type: String,

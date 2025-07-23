@@ -81,7 +81,7 @@ const DeleteCarFromCart = async(carId) => {
           <h1 className="text-2xl font-bold">Your Cart is Empty</h1>
         </div>
       ) : (
-        <div className="h-full bg-gray-300 p-5 overflow-x-auto">
+        <div className="h-full bg-gray-300 p-5 ">
           <h1 className="text-2xl ">Your Cart</h1>
           <p className="mb-5 text-xl text-gray-600">
             There is{" "}

@@ -2,9 +2,12 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router'
 import {  LucideBriefcaseBusiness } from 'lucide-react';
 import ProfileMenu from './ProfileMenu';
+import { UserContext } from '../../context/usercontext';
+import { useContext } from 'react';
 
 
 const ExploreHeader = () => {
+    const {UserData ,setUserData} = useContext(UserContext)
   const Navigate = useNavigate() 
   return (
     <header className='p-3 border-white border-2 bg-[var(--third-color)] flex items-center justify-between sticky top-0 z-30'>
@@ -12,8 +15,10 @@ const ExploreHeader = () => {
             <nav className='flex items-center gap-5'>
                 <ul className='flex gap-5 items-center text-base'>
                     <Link to={'/explore'}>Explore</Link>
-                    <Link onClick={() => Navigate('/Cars')}>Cars</Link>
-                    <Link onClick={() => Navigate('/favourites')}>Favourites</Link>
+                    <Link to={'/Cars'}>Cars</Link>
+                    <Link to={'/favourites'}>Favourites</Link>
+                    {UserData.user.role === "admin" && <Link>Promos</Link>}
+                    {UserData.user.role === "admin" && <Link>Popular</Link>}
                 </ul>
               
             </nav>

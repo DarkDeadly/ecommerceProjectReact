@@ -16,6 +16,7 @@ import CarDetails from "./pages/CarDetails.jsx";
 import { CarDetailContext } from "./context/CarContext.jsx";
 import CartPage from "./pages/CartPage.jsx";
 import FavouritePage from "./pages/FavouritePage.jsx";
+import { UserContext } from "./context/usercontext.js";
 
 
 const router = createBrowserRouter([
@@ -31,13 +32,16 @@ const router = createBrowserRouter([
 
 const RootApp = () => {
   const [CarDetailData, setCarDetailData] = useState({});
+  const [UserData, setUserData] = useState()
 
   return (
     <StrictMode>
+      <UserContext.Provider value={{UserData, setUserData}}>
       <CarDetailContext.Provider value={{ CarDetailData, setCarDetailData }}>
         <Toaster position="top-center" />
         <RouterProvider router={router} />
       </CarDetailContext.Provider>
+      </UserContext.Provider>
     </StrictMode>
   );
 };
