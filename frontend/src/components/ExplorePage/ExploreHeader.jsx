@@ -17,8 +17,8 @@ const ExploreHeader = () => {
                     <Link to={'/explore'}>Explore</Link>
                     <Link to={'/Cars'}>Cars</Link>
                     <Link to={'/favourites'}>Favourites</Link>
-                    {UserData.user.role === "admin" && <Link>Promos</Link>}
-                    {UserData.user.role === "admin" && <Link>Popular</Link>}
+                    {UserData.user.role === "admin" && <Link to={'/promos'}>Promos</Link>}
+                    {UserData.user.role === "admin" && <Link to={'/popular'}>Popular</Link>}
                 </ul>
               
             </nav>

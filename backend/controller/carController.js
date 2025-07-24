@@ -117,6 +117,23 @@ const editCar = async (req, res) => {
   }
 };
 
+const GetPromoCars = async(req , res) => {
+  try {
+    const Cars = await CarModel.find({Promo : { $gt: 0 } }).limit(4)
+
+    res.status(200).json({
+      message : "Getting Data",
+      cars : Cars
+    })
+  } catch (error) {
+    res.status(404).json({
+      message: "error",
+      error: error.message,
+    });
+  }
+}
+
+
 const deleteCar = async (req, res) => {
   const carID = req.params.id;
   try {
@@ -159,4 +176,5 @@ module.exports = {
   editCar,
   deleteCar,
   GetPopularCars,
+  GetPromoCars
 };
