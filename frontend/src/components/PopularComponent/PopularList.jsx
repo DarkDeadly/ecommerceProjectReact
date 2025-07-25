@@ -55,7 +55,7 @@ const PopularList = () => {
   console.log(data);
   return (
     <div className="pl-5">
-        <h1 className="text-3xl pt-5"> Manage your Promo Cars : </h1>
+        <h1 className="text-3xl pt-5"> Manage your Popular Cars : </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-5">
       {data.cars.map((car, index) => (
         <Card sx={{ width: 420 }} key={index}>

@@ -36,7 +36,6 @@ const PopularCars = () => {
     getPopularCars()
   }, [])
 
-  const skeletons = Array.from({ length: 6 })
 
   return (
     <>

@@ -138,7 +138,7 @@ const PromoList = () => {
 
     return (
         <div className="pl-5">
-            {/* ✅ Modal outside the map - only one modal */}
+            
             <Modal
                 open={open}
                 onClose={handleClose}
